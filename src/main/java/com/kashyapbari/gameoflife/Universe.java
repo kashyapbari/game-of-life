@@ -41,16 +41,10 @@ public class Universe {
 
     public void playTick(int tick){
         for (int i = 0; i < tick; i++) {
-            for(Cell cell: alive.getSet()){
-                playCell(cell,true);
-            }
-            for(Cell cell: dead.getSet()){
-                playCell(cell, false);
-            }
-//            alive.getSet().forEach(cell -> {
-//                playCell(cell, true);});
-//            dead.getSet().forEach(cell -> {
-//                playCell(cell, false);});
+            alive.getSet().forEach(cell -> {
+                playCell(cell, true);});
+            dead.getSet().forEach(cell -> {
+                playCell(cell, false);});
             alive.removeAll(killed);
             alive.addAll(resurrected);
 //            dead.addAll(killed);
@@ -66,7 +60,6 @@ public class Universe {
         Set<Cell> aliveNeighbours = alive.intersection(neighbours);
         Boolean newStateFlag = applyRule(cell, aliveNeighbours.size(), aliveFlag);
         if(aliveFlag){
-//            Set<Cell> deadNeighbours = neighbours.diff(aliveNeighbours);
             neighbours.removeAll(aliveNeighbours);
             dead.addAll(neighbours);
         }
