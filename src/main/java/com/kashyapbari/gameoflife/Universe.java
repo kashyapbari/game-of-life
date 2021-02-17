@@ -30,10 +30,6 @@ public class Universe {
     private static HashSet<Cell>  cellSetFromString(String cellMatrix){
         HashSet<Cell> cells = new HashSet();
         for(String location: cellMatrix.split("\n+")){
-//            String[] positions = location.strip().split(",");
-//            cells.add(new Cell(
-//                    Integer.parseInt(positions[0].strip()),
-//                    Integer.parseInt(positions[1].strip())));
             cells.add(new Cell(location));
         }
         return cells;
