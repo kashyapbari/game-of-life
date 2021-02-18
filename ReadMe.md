@@ -79,15 +79,15 @@ Pattern |Input | Output
 
 ##### 1. On running the app as mentioned above you will be prompted to enter the Initial State of the Universe.
 This is where you provide cell locations of all the alive cells.
-* Cell row and columns are seperated by ','
+* Cell row and columns are separated  by ','
 * Each cell is entered on the next time
 * When you are done entering seed data press enter to leave a line empty this will start the first tick
 
 ![img.png](resources/img.png)
 ##### 2. Reading Output
 After every Tick output will be printed on the console.
-* Cell row and column seperated by ',' and each cell on new line
+* Cell row and column separated  by ',' and each cell on new line
 * To play the next Tick simply press Enter.
-* To quite enter 'quit' in the console
+* To quit enter 'quit' in the console
 
 ![img_1.png](resources/img_1.png)
