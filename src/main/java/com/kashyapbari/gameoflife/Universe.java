@@ -1,12 +1,14 @@
 package com.kashyapbari.gameoflife;
 
-import com.kashyapbari.gameoflife.model.Cell;
-import com.kashyapbari.gameoflife.model.Set;
+import com.kashyapbari.gameoflife.container.Set;
+import com.kashyapbari.gameoflife.universe.component.Cell;
+import lombok.AllArgsConstructor;
 import lombok.ToString;
 
 import java.util.HashSet;
 import java.util.Objects;
 
+@AllArgsConstructor
 @ToString
 public class Universe {
     private Set<Cell> alive;
@@ -15,17 +17,17 @@ public class Universe {
         this.alive = new Set<>(alive);
     }
 
-    public Universe(String aliveMatrix) {
-        this(cellSetFromString(aliveMatrix));
-    }
-
-    private static HashSet<Cell>  cellSetFromString(String cellMatrix){
-        HashSet<Cell> cells = new HashSet();
-        for(String location: cellMatrix.split("\n+")){
-            cells.add(new Cell(location));
-        }
-        return cells;
-    }
+//    public Universe(String aliveMatrix) {
+//        this(cellSetFromString(aliveMatrix));
+//    }
+//
+//    private static HashSet<Cell>  cellSetFromString(String cellMatrix){
+//        HashSet<Cell> cells = new HashSet();
+//        for(String location: cellMatrix.split("\n+")){
+//            cells.add(new Cell(location));
+//        }
+//        return cells;
+//    }
 
     public Universe playTick(int tick){
         for (int i = 0; i < tick; i++) {

@@ -1,6 +1,6 @@
 package com.kashyapbari.gameoflife;
 
-import com.kashyapbari.gameoflife.model.Cell;
+import com.kashyapbari.gameoflife.universe.component.Cell;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

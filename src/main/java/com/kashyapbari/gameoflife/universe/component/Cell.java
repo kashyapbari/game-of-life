@@ -1,5 +1,6 @@
-package com.kashyapbari.gameoflife.model;
+package com.kashyapbari.gameoflife.universe.component;
 
+import com.kashyapbari.gameoflife.container.Set;
 import lombok.*;
 
 import java.util.HashSet;

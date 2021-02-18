@@ -1,7 +1,6 @@
-package com.kashyapbari.gameoflife.model;
+package com.kashyapbari.gameoflife.container;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 
 import java.util.HashSet;
 import java.util.Objects;
