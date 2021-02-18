@@ -7,7 +7,7 @@ import com.kashyapbari.gameoflife.util.parser.exception.ParserException;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class main {
+public class Main {
 
     public static String getUserInput(Scanner scanner){
         String line = scanner.nextLine();
