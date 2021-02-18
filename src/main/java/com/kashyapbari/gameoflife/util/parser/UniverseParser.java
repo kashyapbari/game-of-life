@@ -7,7 +7,7 @@ import com.kashyapbari.gameoflife.util.parser.exception.ParserException;
 
 import java.util.HashSet;
 
-public class UniverseParser<T> implements Parser<Universe> {
+public class UniverseParser implements Parser<Universe> {
 
     @Override
     public Universe parse(String input) throws ParserException {

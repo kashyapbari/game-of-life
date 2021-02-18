@@ -1,4 +1,4 @@
-package com.kashyapbari.gameoflife.main;
+package com.kashyapbari.gameoflife;
 
 import com.kashyapbari.gameoflife.Universe;
 import com.kashyapbari.gameoflife.util.parser.UniverseParser;
