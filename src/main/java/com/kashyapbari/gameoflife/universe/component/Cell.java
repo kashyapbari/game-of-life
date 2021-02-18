@@ -45,4 +45,8 @@ public class Cell {
         }
         return neighbours;
     }
+
+    public String stringValue(){
+        return row+","+column;
+    }
 }

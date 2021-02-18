@@ -9,8 +9,8 @@ public class CellParser implements Parser<Cell> {
     public Cell parse(String input) throws ParserException {
         try {
             String location[] = input.strip().split(",");
-            String locationRow = location[0];
-            String locationColumn = location[1];
+            String locationRow = location[0].strip();
+            String locationColumn = location[1].strip();
             int row = Integer.parseInt(locationRow);
             int col = Integer.parseInt(locationColumn);
             return new Cell(row, col);
