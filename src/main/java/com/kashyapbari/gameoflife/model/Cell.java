@@ -1,9 +1,6 @@
 package com.kashyapbari.gameoflife.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -12,6 +9,7 @@ import java.util.Objects;
 @Setter
 @AllArgsConstructor
 @Builder
+@ToString
 public class Cell {
     private int row;
     private int column;
@@ -47,13 +45,5 @@ public class Cell {
             }
         }
         return neighbours;
-    }
-
-    @Override
-    public String toString() {
-        return "Cell{" +
-                "row=" + row +
-                ", column=" + column +
-                '}';
     }
 }

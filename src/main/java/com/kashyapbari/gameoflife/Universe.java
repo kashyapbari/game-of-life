@@ -12,15 +12,9 @@ import java.util.Objects;
 @Setter
 public class Universe {
     Set<Cell> alive;
-    Set<Cell> dead;
-    Set<Cell> killed;
-    Set<Cell> resurrected;
 
     public Universe(HashSet<Cell> alive) {
         this.alive = new Set<>(alive);
-        this.dead = new Set<>(new HashSet<>());
-        this.killed = new Set<>(new HashSet<>());
-        this.resurrected = new Set<>(new HashSet<>());
     }
 
     public Universe(String aliveMatrix) {
@@ -37,62 +31,46 @@ public class Universe {
 
     public void playTick(int tick){
         for (int i = 0; i < tick; i++) {
-            alive.getSet().forEach(cell -> {
-                playCell(cell, true);});
-            dead.getSet().forEach(cell -> {
-                playCell(cell, false);});
+            Set<Cell> dead = new Set<>(new HashSet<>());
+            Set<Cell> killed = new Set<>(new HashSet<>());
+            Set<Cell> resurrected = new Set<>(new HashSet<>());
+            alive.getSet().forEach(cell ->
+                playAliveCell(cell, dead, killed));
+            dead.getSet().forEach(cell ->
+                    playDeadCell(cell, resurrected));
             alive.removeAll(killed);
             alive.addAll(resurrected);
-//            dead.addAll(killed);
-            dead.clear();
-            killed.clear();
-            resurrected.clear();
         }
     }
 
-    public Boolean playCell(Cell cell, Boolean aliveFlag){
+    private void playAliveCell(Cell cell, Set<Cell> dead, Set<Cell> killed){
         Set<Cell> neighbours = cell.getNeighbours();
-//        Set<Cell> aliveNeighbours = alive.union(killed).intersection(neighbours);
-        Set<Cell> aliveNeighbours = alive.intersection(neighbours);
-        Boolean newStateFlag = applyRule(cell, aliveNeighbours.size(), aliveFlag);
-        if(aliveFlag){
-            neighbours.removeAll(aliveNeighbours);
-            dead.addAll(neighbours);
+        killRule(cell, getAliveNeighbourSize(neighbours), killed);
+        neighbours.removeAll(alive);
+        dead.addAll(neighbours);
+    }
+
+    private void playDeadCell(Cell cell, Set<Cell> resurrected){
+        resurrectRule(cell, getAliveNeighbourSize(cell.getNeighbours()), resurrected);
+
+    }
+
+    private Integer getAliveNeighbourSize(Set<Cell> neighbours){
+        return neighbours.intersection(alive).size();
+    }
+
+    private void killRule(Cell cell, Integer size, Set<Cell> killed){
+        if (size < 2 || size > 3){
+            killed.add(cell);
         }
-        return newStateFlag;
     }
 
-    private Boolean applyRule(Cell cell, Integer size, Boolean aliveFlag) {
-        if(aliveFlag){
-//            kill from loneliness or over crowding
-//            rule 1 and 2
-            if (size < 2 || size >3){
-                aliveFlag = killCell(cell);
-            }
-//            rule 3
+    private void resurrectRule(Cell cell, Integer size,  Set<Cell> resurrected){
+        if (size == 3){
+            resurrected.add(cell);
         }
-        else {
-//            if a dead cell has exactly 3 neighbours it becomes alive
-//            rule 4
-            if(size == 3){
-                aliveFlag = resurrectCell(cell);
-            }
-        }
-        return aliveFlag;
     }
-
-    private Boolean killCell(Cell cell) {
-//        alive.remove(cell);
-        killed.add(cell);
-        return false;
-    }
-
-    private Boolean resurrectCell(Cell cell){
-//        dead.remove(cell);
-        resurrected.add(cell);
-        return true;
-    }
-
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
