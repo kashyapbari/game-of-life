@@ -27,7 +27,7 @@ public class Universe {
         return cells;
     }
 
-    public void playTick(int tick){
+    public Universe playTick(int tick){
         for (int i = 0; i < tick; i++) {
             Set<Cell> dead = new Set<>(new HashSet<>());
             Set<Cell> killed = new Set<>(new HashSet<>());
@@ -39,6 +39,7 @@ public class Universe {
             alive.removeAll(killed);
             alive.addAll(resurrected);
         }
+        return new Universe(alive.getSet());
     }
 
     private void playAliveCell(Cell cell, Set<Cell> dead, Set<Cell> killed){
@@ -78,7 +79,7 @@ public class Universe {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Universe universe = (Universe) o;
-        return Objects.equals(alive, universe.alive);
+        return Objects.equals(alive, universe.getAlive());
     }
 
     @Override

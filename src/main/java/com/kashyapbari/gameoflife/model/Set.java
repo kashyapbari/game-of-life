@@ -6,7 +6,6 @@ import lombok.Getter;
 import java.util.HashSet;
 import java.util.Objects;
 
-@Getter
 @AllArgsConstructor
 public class Set<T> {
     private HashSet<T> set;
@@ -55,8 +54,8 @@ public class Set<T> {
         return this.set.removeAll(set.getSet());
     }
 
-    public void clear(){
-        this.set.clear();
+    public HashSet<T> getSet() {
+        return new HashSet<>(set);
     }
 
     @Override
@@ -64,7 +63,7 @@ public class Set<T> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Set<?> set1 = (Set<?>) o;
-        return getSet().containsAll(set1.getSet());
+        return set.containsAll(set1.getSet());
     }
 
     @Override
