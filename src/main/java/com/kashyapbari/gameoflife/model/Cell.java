@@ -5,8 +5,6 @@ import lombok.*;
 import java.util.HashSet;
 import java.util.Objects;
 
-@Getter
-@Setter
 @AllArgsConstructor
 @Builder
 @ToString
@@ -27,12 +25,12 @@ public class Cell {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cell cell = (Cell) o;
-        return getRow() == cell.getRow() && getColumn() == cell.getColumn();
+        return row == cell.row && column == cell.column;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getRow(), getColumn());
+        return Objects.hash(row, column);
     }
 
     public Set<Cell> getNeighbours() {

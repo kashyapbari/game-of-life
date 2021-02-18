@@ -2,16 +2,15 @@ package com.kashyapbari.gameoflife.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.Objects;
 
 @Getter
-@Setter
 @AllArgsConstructor
 public class Set<T> {
     private HashSet<T> set;
+
 
     public Boolean add(T entity){
         return set.add(entity);
@@ -65,7 +64,6 @@ public class Set<T> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Set<?> set1 = (Set<?>) o;
-//        return Objects.equals(getSet(), set1.getSet());
         return getSet().containsAll(set1.getSet());
     }
 

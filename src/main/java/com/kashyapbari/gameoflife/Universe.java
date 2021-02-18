@@ -2,16 +2,14 @@ package com.kashyapbari.gameoflife;
 
 import com.kashyapbari.gameoflife.model.Cell;
 import com.kashyapbari.gameoflife.model.Set;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.ToString;
 
 import java.util.HashSet;
 import java.util.Objects;
 
-@Getter
-@Setter
+@ToString
 public class Universe {
-    Set<Cell> alive;
+    private Set<Cell> alive;
 
     public Universe(HashSet<Cell> alive) {
         this.alive = new Set<>(alive);
@@ -70,24 +68,21 @@ public class Universe {
             resurrected.add(cell);
         }
     }
-    
+
+    public Set<Cell> getAlive() {
+        return new Set<>(alive.getSet());
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Universe universe = (Universe) o;
-        return Objects.equals(getAlive(), universe.getAlive());
+        return Objects.equals(alive, universe.alive);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getAlive());
-    }
-
-    @Override
-    public String toString() {
-        return "Universe{" +
-                "alive=" + alive +
-                '}';
+        return Objects.hash(alive);
     }
 }
