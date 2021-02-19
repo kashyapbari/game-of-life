@@ -46,7 +46,7 @@ Pattern |Input | Output
 
 ##### 1. JDK 11
 
-##### 2. Gradle
+##### 2. Maven
 
 ##### 3. Junit5
 
