@@ -1,3 +1,5 @@
+[![Java CI with Maven](https://github.com/kashyapbari/game-of-life/actions/workflows/maven.yml/badge.svg)](https://github.com/kashyapbari/game-of-life/actions/workflows/maven.yml)
+
 # Game of Life
 
 --------------------------------------------------
